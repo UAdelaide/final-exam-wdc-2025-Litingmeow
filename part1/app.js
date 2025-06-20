@@ -62,7 +62,9 @@ let db;
     //Intert dogs to test
     const [dogs] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     if (dogs[0].count === 0) {
-      console
+      console.log('No dogs found, inserting test data...');
+      await db.execute(`
+        
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
   }
