@@ -1,6 +1,5 @@
 var express = require('express');
-var path = require('path');
-var mysql = require('mysql2/promise');
+
 
 const dogsRouter = require('./routes/dogs');
 const walkersRouter = require('./routes/walkers');
