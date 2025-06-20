@@ -4,7 +4,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql2/promise');
 
-const do
+const dogsRouter = require('./routes/dogs');
+const walkersRouter = require('./routes/walkers');
+const walkRequestsRouter = require('./routes/walkrequests');
 
 var app = express();
 
