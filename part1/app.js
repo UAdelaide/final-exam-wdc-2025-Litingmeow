@@ -4,6 +4,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql2/promise');
 
+const dogsRouter = require('./routes/dogs');
+const walkRequestsRouter = require('./routes/walkrequests'); // corrected filename
+const walkersRouter = require('./routes/walkers');
+
 var app = express();
 
 app.use(logger('dev'));
