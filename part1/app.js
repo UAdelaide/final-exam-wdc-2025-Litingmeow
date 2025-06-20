@@ -88,11 +88,11 @@ let db;
 // Route to return it as JSON
 app.get('/', async (req, res) => {
   try {
-    const [dogs] = await db.execute('
+    const [dogs] = await db.execute(`
       SELECT Dogs.dog_id, Dogs.name, Dogs.size, Users.username AS owner
       FROM Dogs
       JOIN Users ON Dogs.owner_id = Users.user_id
-      ');
+      `);
     res.json(dogs);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch dogs' });
