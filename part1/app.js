@@ -15,9 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/dogs', dogsRouter);
-app.use('/walkers', walkersRouter);
-app.use('/walkrequests', walkRequestsRouter);
+app.use('/api/dogs', dogsRouter);
+app.use('/api/walkers', walkersRouter);
+app.use('/api/walkrequests', walkRequestsRouter);
 
 let db;
 
