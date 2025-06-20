@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const { db } = require('../app');
 
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query(`
+    const [rows] = await db.query(`
       SELECT username, email FROM Users WHERE role = 'walker'
     `);
     res.json(rows);
