@@ -7,11 +7,6 @@ const walkRequestsRouter = require('./routes/walkrequests');
 
 var app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 app.use('/api/dogs', dogsRouter);
 app.use('/api/walkers', walkersRouter);
 app.use('/api/walkrequests', walkRequestsRouter);
