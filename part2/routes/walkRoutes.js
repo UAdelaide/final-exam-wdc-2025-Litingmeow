@@ -69,6 +69,21 @@ router.post('/:id/apply', async (req, res) => {
   }
 });
 
-router
+router.get('/dogs/mine', async (req, res) => {
+  const userId = req.user.user_id; // Assuming user_id is stored in req.user
+
+  try {
+    const [rows] = await db.query(`
+      SELECT d.*
+      FROM Dogs d
+      WHERE d.owner_id = ?
+    `, [userId]);
+
+    res.json(rows);
+  } catch (error) {
+    console.error('SQL Error:', error);
+    res.status(500).json({ error: 'Failed to fetch your dogs' });
+  }
+});
 
 module.exports = router;
