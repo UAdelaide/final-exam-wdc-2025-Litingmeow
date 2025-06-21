@@ -39,10 +39,10 @@ router.post('/login', async (req, res) => {
     const [rows] = await db.query(`
       SELECT user_id, username, email, password_hash, role FROM Users
       WHERE username = ?
-    `, [email]);
+    `, [username]);
 
     if (rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      return res.status(401).json({ error: 'Invalid password' });
     }
 
     const user = rows[0];
