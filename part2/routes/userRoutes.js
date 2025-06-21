@@ -71,7 +71,7 @@ router.get('/me', (req, res) => {
   res.json(req.session.user);
 });
 
-// LOGOUT route
+// for logout
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
