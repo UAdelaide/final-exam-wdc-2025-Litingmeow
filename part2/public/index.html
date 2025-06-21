@@ -12,8 +12,17 @@
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
-<p>User Name</p>
+    
+    <form @submit.prevent="login">
+      <label for="username">Username</label><br>
+      <input type="text" id="username" v-model="username" required><br><br>
 
+      <label for="password">Password</label><br>
+      <input type="password" id="password" v-model="password" required><br><br>
+
+      <button type="submit">Log In</button>
+      <p v-if="error" style="color: red;">{{ error }}</p>
+    </form>
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
   </div>
