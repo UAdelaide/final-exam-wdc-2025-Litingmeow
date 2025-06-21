@@ -82,7 +82,19 @@
         const message = ref('');
         const error = ref('');
 
-        //
+        //another function for outlog checking
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', { method: 'POST' });
+            if (res.ok) {
+              window.location.href = 'index.html'; // Redirect to login page
+            } else {
+              throw new Error('Logout failed');
+            }
+          } catch (err) {
+            error.value = err.message;
+          }
+        }
 
         async function loadWalks() {
           try {
