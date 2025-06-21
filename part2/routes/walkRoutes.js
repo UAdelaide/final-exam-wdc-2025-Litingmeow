@@ -3,8 +3,10 @@ const router = express.Router();
 const db = require('../models/db');
 
 //create a new router for all dogs list
-router.
-
+router.get('/dogs', async (req, res) => {
+  try{
+    
+  }
 // GET all walk requests (for walkers to view)
 router.get('/', async (req, res) => {
   try {
