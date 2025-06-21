@@ -70,7 +70,7 @@ router.post('/:id/apply', async (req, res) => {
 });
 
 router.get('/dogs/mine', async (req, res) => {
-  const userId = req.user.user_id; // Assuming user_id is stored in req.user
+  const userId = req.user.user_id;
   if (!req.session.user || req.session.user.role !== 'owner') {
     return res.status(401).json({ error: 'Unauthorized' });
   }
