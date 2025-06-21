@@ -13,21 +13,21 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST a new user (simple signup)
-router.post('/register', async (req, res) => {
-  const { username, email, password, role } = req.body;
+// // POST a new user (simple signup)
+// router.post('/register', async (req, res) => {
+//   const { username, email, password, role } = req.body;
 
-  try {
-    const [result] = await db.query(`
-      INSERT INTO Users (username, email, password_hash, role)
-      VALUES (?, ?, ?, ?)
-    `, [username, email, password, role]);
+//   try {
+//     const [result] = await db.query(`
+//       INSERT INTO Users (username, email, password_hash, role)
+//       VALUES (?, ?, ?, ?)
+//     `, [username, email, password, role]);
 
-    res.status(201).json({ message: 'User registered', user_id: result.insertId });
-  } catch (error) {
-    res.status(500).json({ error: 'Registration failed' });
-  }
-});
+//     res.status(201).json({ message: 'User registered', user_id: result.insertId });
+//   } catch (error) {
+//     res.status(500).json({ error: 'Registration failed' });
+//   }
+// });
 
 // POST login with session
 router.post('/login', async (req, res) => {
