@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
 
 // POST login with session and bcrypt
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
     // Look up user by email
