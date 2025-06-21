@@ -54,8 +54,8 @@
           if (!res.ok) throw new Error('Not logged in');
           const currentUser = await res.json();
           userId.value = currentUser.user_id;
-  } catch (err) {
-    error.value = 'Failed to get current user';
+        } catch (err) {
+          error.value = 'Failed to get current user';
   }
 }
 
