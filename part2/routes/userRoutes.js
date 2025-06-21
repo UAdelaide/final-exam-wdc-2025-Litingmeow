@@ -63,7 +63,7 @@ router.post('/login', async (req, res) => {
     res.json({ message: 'Login successful', role: user.role });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Login failed due to ' });
+    res.status(500).json({ error: 'Login failed due to server error!' });
   }
 });
 
