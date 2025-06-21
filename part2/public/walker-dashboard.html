@@ -45,7 +45,20 @@
         const message = ref('');
         const error = ref('');
 
-        //
+        //replace the hardcode to currect user
+        const userId = ref(null);
+
+        async function getCurrentUser() {
+          try {
+          const res = await fetch('/api/users/me');
+          if (!res.ok) throw new Error('Not logged in');
+          const currentUser = await res.json();
+          userId.value = currentUser.user_id;
+  } catch (err) {
+    error.value = 'Failed to get current user';
+  }
+}
+
 
         //another function for outlog checking
         async function logout() {
