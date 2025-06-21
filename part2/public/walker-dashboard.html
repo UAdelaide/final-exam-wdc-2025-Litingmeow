@@ -46,6 +46,16 @@
         const error = ref('');
         const user = 3;
 
+        //another function for outlog checking
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', { method: 'POST' });
+              window.location.href = 'index.html'; // Redirect to login page
+          } catch (err) {
+            error.value = 'Failed to log out';
+          }
+        }
+
         async function loadWalkRequests() {
           try {
             const res = await fetch('/api/walks');
