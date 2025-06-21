@@ -17,10 +17,10 @@
     <form @submit.prevent="login">
       <label for="username">Username</label><br>
       <input type="text" id="username" v-model="username" required><br><br>
-
+      <!-- Password input -->
       <label for="password">Password</label><br>
       <input type="password" id="password" v-model="password" required><br><br>
-
+      <!-- Submit button -->
       <button type="submit">Log In</button>
       <p v-if="error" style="color: red;">{{ error }}</p>
     </form>
