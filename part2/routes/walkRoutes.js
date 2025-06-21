@@ -71,19 +71,13 @@ router.post('/:id/apply', async (req, res) => {
 
 router.get('/dogs/mine', async (req, res) => {
   const userId = req.user.user_id; // Assuming user_id is stored in req.user
-
-  try {
-    const [rows] = await db.query(`
-      SELECT d.*
-      FROM Dogs d
-      WHERE d.owner_id = ?
-    `, [userId]);
-
-    res.json(rows);
-  } catch (error) {
-    console.error('SQL Error:', error);
-    res.status(500).json({ error: 'Failed to fetch your dogs' });
+  if (!req.session.user || req.session.user.role !== 'owner') {
+    return res.status(401).json({ error: 'Unauthorized' });
   }
+
+  const ownerId = req.session.user.user_id;
+  const [dogs] = await db.query('SELECT dog_id, name FROM dogs WHERE owner_id = ?', [ownerId]);
+  res.json(dogs);
 });
 
 module.exports = router;
