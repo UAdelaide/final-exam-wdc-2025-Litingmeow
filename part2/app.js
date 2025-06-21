@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 // Add session middleware
 app.use(session({
-  secret: 'supersecretkey', // choose a strong unique key in production
+  secret: 'supersecretkey',
   resave: false,
   saveUninitialized: false
 }));
