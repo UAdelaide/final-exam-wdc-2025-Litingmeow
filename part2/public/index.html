@@ -22,6 +22,7 @@
       <input type="password" id="password" v-model="password" required><br><br>
       <!-- Submit button -->
       <button type="submit">Log In</button>
+       <!-- Error message if login fails -->
       <p v-if="error" style="color: red;">{{ error }}</p>
     </form>
 
