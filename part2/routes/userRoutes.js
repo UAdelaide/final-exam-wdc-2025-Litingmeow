@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Look up user by email
+    // Look up user by name and get password hash
     const [rows] = await db.query(`
       SELECT user_id, username, email, password_hash, role FROM Users
       WHERE username = ?
