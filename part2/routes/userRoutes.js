@@ -34,21 +34,17 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Query the database for a user with the provided username
-    const [rows] = await db.query(`
-      SELECT user_id, username, email, password_hash, role FROM Users
-      WHERE username = ?
-    `, [username]);
+    // 1. Query the database for a user with the provided username
+    const [rows] = await db.query('SELECT * FROM Users WHERE username = ?', [username]);
+    const user = rows[0];
 
-    if (rows.length === 0) {
+    // 2. If no user found, return error
+    if (!user) {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
 
-    const user = rows[0];
-
-    // Compare password hash
-    const isMatch = password === user.password_hash;
-    if (!isMatch) {
+    // 3. If password does not match, return error
+    if (user.password_hash !== password) {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
 
