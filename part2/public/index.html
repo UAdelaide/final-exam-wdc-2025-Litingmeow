@@ -85,11 +85,6 @@
           } catch (err) {
             this.error = 'Server error.';
           }
-        }
-      }
-          methods: {
-      async login() {
-        // your existing login code
       },
       async fetchDogs() {
         try {
@@ -109,8 +104,7 @@
     created() {
       this.fetchDogs(); // 👈 runs automatically when the page loads
     }
-  });
-    }).mount('#app');
+  }).mount('#app');
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
