@@ -89,10 +89,10 @@
             if (res.ok) {
               window.location.href = 'index.html'; // Redirect to login page
             } else {
-              throw new Error('Logout failed');
+        
             }
           } catch (err) {
-            error.value = err.message;
+            error.value = 'Failed to log out';
           }
         }
 
