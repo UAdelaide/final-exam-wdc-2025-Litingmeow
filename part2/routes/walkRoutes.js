@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
-//create a new 
+//create a new router for all dogs list
+router.
 
 // GET all walk requests (for walkers to view)
 router.get('/', async (req, res) => {
