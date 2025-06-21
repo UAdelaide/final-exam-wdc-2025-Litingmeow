@@ -30,7 +30,44 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// POST login with session and bcrypt
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
+  try {
+    // Look up user by email
+    const [rows] = await db.query(`
+      SELECT user_id, username, email, password_hash, role FROM Users
+      WHERE email = ?
+    `, [email]);
+
+    if (rows.length === 0) {
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+
+    const user = rows[0];
+
+    // Compare password hash
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+
+    // Store user info in session
+    req.session.user = {
+      user_id: user.user_id,
+      username: user.username,
+      email: user.email,
+      role: user.role
+    };
+
+    res.json({ message: 'Login successful', user: req.session.user });
+  } catch (error) {
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+// GET current session user
 router.get('/me', (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
