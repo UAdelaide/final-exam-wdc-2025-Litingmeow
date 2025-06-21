@@ -9,6 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
+// Add session middleware
+app.use(session({
+  secret: 'supersecretkey', // choose a strong unique key in production
+  resave: false,
+  saveUninitialized: false
+}));
+
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
 const userRoutes = require('./routes/userRoutes');
