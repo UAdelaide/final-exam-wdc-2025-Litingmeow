@@ -5,8 +5,7 @@ const db = require('../models/db');
 //create a new router for all dogs list
 router.get('/dogs', async (req, res) => {
   try{
-    const [rows] = await db.query(`SE
-    `);
+    const [rows] = await db.query(`SELECT * FROM Dogs`);
     res.json(rows);
   }
 // GET all walk requests (for walkers to view)
