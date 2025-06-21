@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
     `, [username]);
 
     if (rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid password' });
+      return res.status(401).json({ error: 'Invalid username or password' });
     }
 
     const user = rows[0];
