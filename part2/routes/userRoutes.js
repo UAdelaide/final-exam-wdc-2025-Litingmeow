@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
+const session = require('express-session');
+const bcrypt = require('bcrypt'); // Assuming bcrypt is used for password hashing
 
 // GET all users (for admin/testing)
 router.get('/', async (req, res) => {
